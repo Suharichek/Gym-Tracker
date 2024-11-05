@@ -1,1 +1,1 @@
-# Gym-Tracker
+# Gym Tracker
