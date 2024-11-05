@@ -18,7 +18,7 @@ struct ContentView: View {
                 WorkoutListView(viewModel: workoutViewModel)
             }
             .tabItem {
-                Label("Workouts", systemImage: "heart.fill")
+                Label("Workouts", systemImage: "figure.strengthtraining.traditional")
             }
 
             // Экран "Упражнения"
@@ -28,12 +28,12 @@ struct ContentView: View {
                 }
             }
             .tabItem {
-                Label("Exercises", systemImage: "figure.walk")
+                Label("Exercises", systemImage: "figure.run.square.stack")
             }
 
             // Экран "Статистика"
             NavigationView {
-                StatisticsView(workoutViewModel: workoutViewModel)
+                StatisticsView(workoutViewModel: exerciseViewModel)
             }
             .tabItem {
                 Label("Statistics", systemImage: "chart.bar")

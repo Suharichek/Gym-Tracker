@@ -22,6 +22,9 @@ struct ExerciseListView: View {
             }
         }
         .navigationTitle("Exercises")
+        .navigationBarItems(trailing: NavigationLink(destination: AddExerciseView(viewModel: viewModel)) {
+            Image(systemName: "plus")
+        })
     }
 }
 

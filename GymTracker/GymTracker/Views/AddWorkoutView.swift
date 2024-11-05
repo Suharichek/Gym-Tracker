@@ -39,13 +39,19 @@ struct AddWorkoutView: View {
                 }
                 
                 Section(header: Text("Duration")) {
-                    Stepper("Duration: \(Int(duration)) seconds", value: $duration, in: 0...3600)
+                    HStack {
+                        Text("Duration: \(Int(duration / 60)) min \(Int(duration.truncatingRemainder(dividingBy: 60))) sec")
+                        Slider(value: $duration, in: 0...3600, step: 1)
+                    }
                 }
+
             }
             .navigationTitle("Add Workout")
-            .navigationBarItems(trailing: Button("Save") {
+            .navigationBarItems(trailing: Button(action: {
                 saveWorkout()
                 presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "checkmark")
             })
         }
     }

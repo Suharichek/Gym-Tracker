@@ -13,6 +13,8 @@ struct AddExerciseView: View {
     @State private var weight: Double?
     @State private var duration: Double?
     @State private var sets: Int = 1
+    
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
@@ -29,10 +31,18 @@ struct AddExerciseView: View {
                 }
             }
             .navigationTitle("Add Exercise")
-            .navigationBarItems(trailing: Button("Save") {
-                viewModel.addExercise(name: name, weight: weight, duration: duration, sets: sets)
+            .navigationBarItems(trailing: Button(action: {
+                saveExercise()
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "checkmark")
             })
         }
+    }
+    
+    private func saveExercise() {
+        let newExercise = Exercise(name: name, weight: weight, duration: duration, sets: sets)
+        viewModel.exercises.append(newExercise)
     }
 }
 
